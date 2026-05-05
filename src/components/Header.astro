@@ -1,0 +1,91 @@
+---
+const isProjects = Astro.url.pathname === '/projects';
+---
+
+<header class="sticky top-0 z-10 bg-surface p-4">
+  <div class="max-w-screen-sm mx-auto">
+    {isProjects ? (
+      <div class="flex items-center justify-between">
+        <nav id="filters" class="flex gap-4 text-sm items-center">
+          <a href="/" class="text-text-muted hover:text-text-primary transition" aria-label="Volver al inicio">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5m7-7l-7 7 7 7"/>
+            </svg>
+          </a>
+          <button data-filter="all" data-i18n="nav.filters.all" class="hover:underline text-text-primary cursor-pointer">Todos</button>
+          <button data-filter="saas" data-i18n="nav.filters.saas" class="hover:underline text-text-primary cursor-pointer">SaaS</button>
+          <button data-filter="diseno" data-i18n="nav.filters.diseno" class="hover:underline text-text-primary cursor-pointer">Diseño</button>
+          <button data-filter="others" data-i18n="nav.filters.others" class="hover:underline text-text-primary cursor-pointer">Others</button>
+        </nav>
+
+        <div class="flex gap-4 items-center">
+          <button id="lang-toggle" aria-label="Cambiar idioma" class="cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </button>
+
+          <button id="theme-toggle" aria-label="Cambiar tema" class="cursor-pointer">
+            <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-icon fill-none hidden" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    ) : (
+      <div class="flex items-center justify-between">
+        <nav class="flex gap-4 text-sm">
+          <a href="#hero" class="hover:underline text-text-primary" data-i18n="nav.home">Inicio</a>
+          <a href="#projects" class="hover:underline text-text-primary" data-i18n="nav.projects">Proyectos</a>
+          <a href="#certifications" class="hover:underline text-text-primary" data-i18n="nav.certifications">Certificaciones</a>
+          <a href="#education" class="hover:underline text-text-primary" data-i18n="nav.education">Educación</a>
+          <a href="#contact" class="hover:underline text-text-primary">Contacto</a>
+        </nav>
+
+        <div class="flex gap-4 items-center">
+          <button id="lang-toggle" aria-label="Cambiar idioma" class="cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </button>
+
+          <button id="theme-toggle" aria-label="Cambiar tema" class="cursor-pointer">
+            <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-icon fill-none hidden" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    )}
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const sun = document.getElementById('icon-sun');
+  const moon = document.getElementById('icon-moon');
+
+  const isDark = document.documentElement.classList.contains('dark');
+  if (isDark) {
+    sun?.classList.remove('hidden');
+    moon?.classList.add('hidden');
+  }
+
+  toggle?.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    sun?.classList.toggle('hidden');
+    moon?.classList.toggle('hidden');
+    const nowDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+  });
+</script>
