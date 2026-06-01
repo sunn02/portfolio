@@ -1,0 +1,6 @@
+---
+const { delay } = Astro.props;
+const delayClass = delay ? `reveal-delay-${delay}` : '';
+---
+
+<div class={`section-divider max-w-xs reveal ${delayClass}`}></div>

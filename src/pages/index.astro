@@ -4,13 +4,22 @@ import Hero from '../components/Hero.astro';
 import Projects from '../components/Projects.astro';
 import Certifications from '../components/Certifications.astro';
 import Education from '../components/Education.astro';
+import Tools from '../components/Tools.astro';
 import Contact from '../components/Contact.astro';
+import Divider from '../components/Divider.astro';
 ---
 
-<Layout>
+<Layout title="Sol · Computer Science Student" description="Computer Science Student from Luque, Paraguay. Data structures, cybersecurity, and UI design.">
   <Hero />
+  <Divider delay={1} />
   <Projects />
-  <Certifications />
-  <Education />
+  <Divider delay={1} />
+  <Tools />
+  <Divider delay={1} />
+  <section id="formacion" class="scroll-mt-16">
+    <Certifications />
+    <Education />
+  </section>
+  <Divider delay={1} />
   <Contact />
 </Layout>
