@@ -112,20 +112,33 @@ const isProjects = Astro.url.pathname === '/projects';
   const navLinks = document.querySelectorAll('nav a[href^="#"]');
   const sections = [...navLinks].map(a => document.getElementById(a.getAttribute('href')?.slice(1))).filter(Boolean);
 
+  let scrollingFromClick = false;
+
+  const updateActiveLink = () => {
+    let current = '';
+    sections.forEach(s => {
+      const rect = s!.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.4) current = '#' + s!.id;
+    });
+    navLinks.forEach(a => a.classList.toggle('font-bold', a.getAttribute('href') === current));
+  };
+
   navLinks.forEach(a => {
     a.addEventListener('click', () => {
       navLinks.forEach(l => l.classList.remove('font-bold'));
       a.classList.add('font-bold');
+      scrollingFromClick = true;
     });
   });
 
+  document.addEventListener('scrollend', () => {
+    scrollingFromClick = false;
+    updateActiveLink();
+  }, { passive: true });
+
   const observer = new IntersectionObserver(() => {
-    let current = '';
-    sections.forEach(s => {
-      const rect = s.getBoundingClientRect();
-      if (rect.top <= window.innerHeight * 0.4) current = '#' + s.id;
-    });
-    navLinks.forEach(a => a.classList.toggle('font-bold', a.getAttribute('href') === current));
+    if (scrollingFromClick) return;
+    updateActiveLink();
   }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
 
   sections.forEach(s => observer.observe(s));
