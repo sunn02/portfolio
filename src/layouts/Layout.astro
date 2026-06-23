@@ -19,9 +19,6 @@ const ogImage = new URL(image, site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&family=MonteCarlo&display=swap" rel="stylesheet">
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -58,7 +55,7 @@ const ogImage = new URL(image, site);
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
           if (translations[key]) {
-            el.textContent = translations[key];
+            el.innerHTML = translations[key];
           }
         });
         localStorage.setItem('lang', lang);
@@ -91,10 +88,8 @@ const ogImage = new URL(image, site);
   </head>
   <body class="flex flex-col min-h-screen bg-white text-text-primary dark:bg-black">
     <Header />
-    <main class="flex-1 bg-surface p-4">
-      <div class="max-w-screen-sm mx-auto">
-        <slot />
-      </div>
+    <main class="flex-1 bg-surface">
+      <slot />
     </main>
     <Footer />
   </body>

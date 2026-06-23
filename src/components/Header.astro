@@ -2,93 +2,114 @@
 const isProjects = Astro.url.pathname === '/projects';
 ---
 
-<header class="sticky top-0 z-10 bg-surface p-4">
-  <div class="max-w-screen-sm mx-auto">
-    {isProjects ? (
+<header class="sticky top-0 z-10 bg-surface px-4 sm:px-8 md:px-16">
+  {isProjects ? (
       <div class="flex items-center justify-between">
-        <nav id="filters" class="flex gap-4 text-sm items-center">
-          <a href="/" class="text-text-muted hover:text-text-primary transition" aria-label="Volver al inicio">
+        <nav id="filters" class="flex gap-4 text-sm md:text-base items-center overflow-x-auto">
+          <a href="/" class="text-text-muted hover:text-text-primary transition shrink-0" aria-label="Volver al inicio">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path d="M19 12H5m7-7l-7 7 7 7"/>
             </svg>
           </a>
-          <button data-filter="all" data-i18n="nav.filters.all" class="hover:underline text-text-primary cursor-pointer">Todos</button>
-          <button data-filter="saas" data-i18n="nav.filters.saas" class="hover:underline text-text-primary cursor-pointer">SaaS</button>
-          <button data-filter="diseno" data-i18n="nav.filters.diseno" class="hover:underline text-text-primary cursor-pointer">Diseño</button>
-          <button data-filter="others" data-i18n="nav.filters.others" class="hover:underline text-text-primary cursor-pointer">Others</button>
+          <button data-filter="all" data-i18n="nav.filters.all" class="hover:underline text-text-primary cursor-pointer shrink-0 py-3">Todos</button>
+          <button data-filter="saas" data-i18n="nav.filters.saas" class="hover:underline text-text-primary cursor-pointer shrink-0 py-3">SaaS</button>
+          <button data-filter="diseno" data-i18n="nav.filters.diseno" class="hover:underline text-text-primary cursor-pointer shrink-0 py-3">Diseño</button>
+          <button data-filter="others" data-i18n="nav.filters.others" class="hover:underline text-text-primary cursor-pointer shrink-0 py-3">Others</button>
         </nav>
-
-        <div class="flex gap-4 items-center">
-          <div class="relative group">
-            <button id="lang-toggle" aria-label="Cambiar idioma" class="cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M3 12h18M12 3a15 15 0 0 1 4 9 15 15 0 0 1-4 9 15 15 0 0 1-4-9 15 15 0 0 1 4-9z"/>
-              </svg>
-            </button>
-            <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 px-2 py-0.5 text-xs rounded bg-gray-800 text-white dark:bg-white dark:text-gray-900 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
-              Idioma
-            </span>
-          </div>
-          <div class="relative group">
-            <button id="theme-toggle" aria-label="Cambiar tema" class="cursor-pointer">
-              <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none hidden" viewBox="0 0 24 24" stroke-width="2">
-                <circle cx="12" cy="12" r="5"/>
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-              </svg>
-              <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-            </button>
-            <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 px-2 py-0.5 text-xs rounded bg-gray-800 text-white dark:bg-white dark:text-gray-900 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
-              Tema
-            </span>
-          </div>
-
+        <div class="flex gap-3 items-center shrink-0 ml-2">
+          <button id="lang-toggle" aria-label="Cambiar idioma" class="cursor-pointer p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M3 12h18M12 3a15 15 0 0 1 4 9 15 15 0 0 1-4 9 15 15 0 0 1-4-9 15 15 0 0 1 4-9z"/>
+            </svg>
+          </button>
+          <button id="theme-toggle" aria-label="Cambiar tema" class="cursor-pointer p-1">
+            <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none hidden" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
         </div>
       </div>
     ) : (
       <div class="flex items-center justify-between">
-        <nav class="flex gap-4 text-sm">
-          <a href="#hero" class="hover:underline text-text-primary" data-i18n="nav.home">Inicio</a>
-          <a href="#projects" class="hover:underline text-text-primary" data-i18n="nav.projects">Proyectos</a>
-          <a href="#tools" class="hover:underline text-text-primary" data-i18n="nav.tools">Herramientas</a>
-          <a href="#formacion" class="hover:underline text-text-primary" data-i18n="nav.formacion">Formación</a>
-          <a href="#contact" class="hover:underline text-text-primary">Contacto</a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex text-lg lg:text-xl">
+          <a href="#" class="px-5 lg:px-8 py-3.5 text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.home">Inicio</a>
+          <a href="#projects" class="px-5 lg:px-8 py-3.5 text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.projects">Proyectos</a>
+          <a href="#tools" class="px-5 lg:px-8 py-3.5 text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.tools">Herramientas</a>
+          <a href="#formacion" class="px-5 lg:px-8 py-3.5 text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.formacion">Formación</a>
+          <a href="#contact" class="px-5 lg:px-8 py-3.5 text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.contact">Contacto</a>
         </nav>
 
-        <div class="flex gap-4 items-center">
-          <div class="relative group">
-            <button id="lang-toggle" aria-label="Cambiar idioma" class="cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M3 12h18M12 3a15 15 0 0 1 4 9 15 15 0 0 1-4 9 15 15 0 0 1-4-9 15 15 0 0 1 4-9z"/>
-              </svg>
-            </button>
-            <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 px-2 py-0.5 text-xs rounded bg-gray-800 text-white dark:bg-white dark:text-gray-900 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
-              Idioma
-            </span>
-          </div>
-          <div class="relative group">
-            <button id="theme-toggle" aria-label="Cambiar tema" class="cursor-pointer">
-              <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none hidden" viewBox="0 0 24 24" stroke-width="2">
-                <circle cx="12" cy="12" r="5"/>
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-              </svg>
-              <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-            </button>
-            <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 px-2 py-0.5 text-xs rounded bg-gray-800 text-white dark:bg-white dark:text-gray-900 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
-              Tema
-            </span>
-          </div>
+        <!-- Mobile hamburger (left) -->
+        <button id="menu-toggle" aria-label="Abrir menú" class="md:hidden cursor-pointer p-2">
+          <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-icon fill-none hidden" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
 
+        <div class="flex gap-2 items-center">
+          <button id="lang-toggle" aria-label="Cambiar idioma" class="cursor-pointer p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M3 12h18M12 3a15 15 0 0 1 4 9 15 15 0 0 1-4 9 15 15 0 0 1-4-9 15 15 0 0 1 4-9z"/>
+            </svg>
+          </button>
+          <button id="theme-toggle" aria-label="Cambiar tema" class="cursor-pointer p-2">
+            <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none hidden" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
         </div>
       </div>
     )}
-  </div>
+
 </header>
+
+<!-- Sidebar overlay -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/40 z-20 hidden md:hidden"></div>
+
+<!-- Sidebar -->
+<div id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-surface z-30 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col">
+  <div class="flex items-center justify-between px-4 py-4 border-b border-border">
+    <span class="font-semibold tracking-wide">Sol Lopez</span>
+    <button id="sidebar-close" aria-label="Cerrar menú" class="cursor-pointer p-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-icon fill-none" viewBox="0 0 24 24" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <nav class="flex flex-col mt-2">
+    <a href="#" class="px-6 py-4 text-lg text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.home">Inicio</a>
+    <a href="#projects" class="px-6 py-4 text-lg text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.projects">Proyectos</a>
+    <a href="#tools" class="px-6 py-4 text-lg text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.tools">Herramientas</a>
+    <a href="#formacion" class="px-6 py-4 text-lg text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.formacion">Formación</a>
+    <a href="#contact" class="px-6 py-4 text-lg text-text-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" data-i18n="nav.contact">Contacto</a>
+  </nav>
+</div>
+
+<style>
+  nav a.nav-active {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
+  :global(.dark) nav a.nav-active {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+</style>
 
 <script>
   const toggle = document.getElementById('theme-toggle');
@@ -109,9 +130,35 @@ const isProjects = Astro.url.pathname === '/projects';
     localStorage.setItem('theme', nowDark ? 'dark' : 'light');
   });
 
+  // Sidebar
+  const menuToggle = document.getElementById('menu-toggle');
+  const sidebar = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('sidebar-overlay');
+  const sidebarClose = document.getElementById('sidebar-close');
+
+  const openSidebar = () => {
+    sidebar?.classList.remove('-translate-x-full');
+    overlay?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeSidebar = () => {
+    sidebar?.classList.add('-translate-x-full');
+    overlay?.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  menuToggle?.addEventListener('click', openSidebar);
+  sidebarClose?.addEventListener('click', closeSidebar);
+  overlay?.addEventListener('click', closeSidebar);
+
+  sidebar?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeSidebar);
+  });
+
+  // Active nav
   const navLinks = document.querySelectorAll('nav a[href^="#"]');
   const sections = [...navLinks].map(a => document.getElementById(a.getAttribute('href')?.slice(1))).filter(Boolean);
-
   let scrollingFromClick = false;
 
   const updateActiveLink = () => {
@@ -120,13 +167,13 @@ const isProjects = Astro.url.pathname === '/projects';
       const rect = s!.getBoundingClientRect();
       if (rect.top <= window.innerHeight * 0.4) current = '#' + s!.id;
     });
-    navLinks.forEach(a => a.classList.toggle('font-bold', a.getAttribute('href') === current));
+    navLinks.forEach(a => a.classList.toggle('nav-active', a.getAttribute('href') === current));
   };
 
   navLinks.forEach(a => {
     a.addEventListener('click', () => {
-      navLinks.forEach(l => l.classList.remove('font-bold'));
-      a.classList.add('font-bold');
+      navLinks.forEach(l => l.classList.remove('nav-active'));
+      a.classList.add('nav-active');
       scrollingFromClick = true;
     });
   });
@@ -142,5 +189,4 @@ const isProjects = Astro.url.pathname === '/projects';
   }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
 
   sections.forEach(s => observer.observe(s));
-
 </script>
