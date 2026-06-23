@@ -1,90 +1,34 @@
 ---
+const projects = [
+  { year: '2025', type: 'Web', href: 'https://github.com/sunn02/mini-bank', img: '/projects/minibank.png' },
+  { year: '2025', type: 'Web', href: 'https://github.com/sunn02/LoginPro', title: 'LoginPro' },
+  { year: '2025', type: 'Web', href: 'https://github.com/sunn02/LinkHub', title: 'LinkHub' },
+  { year: '2026', type: 'Web', href: 'https://github.com/alex43x/polirank-backend', img: '/projects/polirank.png' },
+];
 ---
 
-<section id="projects" class="py-12 scroll-mt-16">
-  <div class="flex items-center justify-between mb-6">
-    <h2 class="text-lg font-bold reveal">Proyectos</h2>
-    <a href="/projects" class="text-sm text-link hover:underline inline-flex items-center gap-1">
-      See all
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
+<section id="projects" class="scroll-mt-16 px-4 sm:px-8 md:px-16">
+  <div class="py-12">
+    <h2 class="text-base uppercase tracking-widest text-text-secondary text-center mb-6 reveal" data-i18n="projects.title">Proyectos</h2>
   </div>
 
-  <ul class="flex flex-col gap-6">
-    <li class="rounded-lg overflow-hidden border border-border reveal reveal-delay-1 hover:-translate-y-1 transition-transform duration-300">
-      <a href="#" class="block cursor-pointer">
-        <div class="aspect-video bg-gray-300 dark:bg-gray-700"></div>
+  <div class="grid grid-cols-2 gap-3 md:gap-4 pb-12">
+    {projects.map((p, i) => (
+      <a
+        href={p.href}
+        target={p.href.startsWith('http') ? '_blank' : undefined}
+        rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+        class={`group relative overflow-hidden reveal reveal-delay-${i + 1}`}
+      >
+        {p.img
+          ? <img src={p.img} alt={p.type} class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          : <div class="aspect-video bg-gray-200 dark:bg-gray-800 w-full transition-transform duration-500 group-hover:scale-105 flex flex-col items-center justify-center gap-1"><span class="font-semibold text-sm">{p.title}</span><span class="text-text-muted text-xs uppercase tracking-widest">No available</span></div>
+        }
+        <div class="absolute bottom-0 left-0 right-0 p-3 md:p-5 flex items-end justify-between bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span class="text-white text-xs md:text-sm uppercase tracking-widest">{p.type}</span>
+          <span class="text-white/70 text-xs md:text-sm">{p.year}</span>
+        </div>
       </a>
-      <div class="p-4">
-        <span class="text-xs text-text-muted">2025</span>
-        <h3 class="font-semibold">Nombre del proyecto</h3>
-        <p class="text-sm text-text-secondary mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <div class="flex flex-wrap gap-2 mt-2">
-          <span class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">React</span>
-          <span class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">Node.js</span>
-          <span class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">Tailwind</span>
-        </div>
-        <div class="flex items-center justify-between mt-3">
-          <span class="text-xs font-medium text-text-secondary uppercase tracking-wide">SaaS</span>
-          <a href="#" class="text-sm text-link hover:underline inline-flex items-center gap-1">
-            View details
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="rounded-lg overflow-hidden border border-border reveal reveal-delay-2 hover:-translate-y-1 transition-transform duration-300">
-      <a href="#" class="block cursor-pointer">
-        <div class="aspect-video bg-gray-300 dark:bg-gray-700"></div>
-      </a>
-      <div class="p-4">
-        <span class="text-xs text-text-muted">2024</span>
-        <h3 class="font-semibold">Nombre del proyecto</h3>
-        <p class="text-sm text-text-secondary mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <div class="flex flex-wrap gap-2 mt-2">
-          <span class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">Python</span>
-          <span class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">Django</span>
-          <span class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">PostgreSQL</span>
-        </div>
-        <div class="flex items-center justify-between mt-3">
-          <span class="text-xs font-medium text-text-secondary uppercase tracking-wide">Design</span>
-          <a href="#" class="text-sm text-link hover:underline inline-flex items-center gap-1">
-            View details
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="rounded-lg overflow-hidden border border-border reveal reveal-delay-3 hover:-translate-y-1 transition-transform duration-300">
-      <a href="#" class="block cursor-pointer">
-        <div class="aspect-video bg-gray-300 dark:bg-gray-700"></div>
-      </a>
-      <div class="p-4">
-        <span class="text-xs text-text-muted">2023</span>
-        <h3 class="font-semibold">Nombre del proyecto</h3>
-        <p class="text-sm text-text-secondary mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <div class="flex flex-wrap gap-2 mt-2">
-          <span class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">Flutter</span>
-          <span class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">Dart</span>
-          <span class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">Firebase</span>
-        </div>
-        <div class="flex items-center justify-between mt-3">
-          <span class="text-xs font-medium text-text-secondary uppercase tracking-wide">Mobile</span>
-          <a href="#" class="text-sm text-link hover:underline inline-flex items-center gap-1">
-            View details
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </li>
-  </ul>
-
+    ))}
+  </div>
 </section>

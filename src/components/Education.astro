@@ -1,25 +1,24 @@
 ---
+const items = [
+  { period: '2024 — Actualidad', title: 'Licenciatura en Ciencias Informáticas', place: 'Universidad Nacional de Asunción' },
+  { period: '2025',              title: 'Bootcamp Angular',                       place: 'CLT S.A.' },
+  { period: '2024 — 2025',      title: 'Bootcamp Fullstack',                     place: 'Penguin Academy (CODEPRO)' },
+  { period: '2020 — 2022',      title: 'Bachiller Técnico en Informática',       place: 'Colegio Dr. Manuel Domínguez' },
+];
 ---
 
-<section id="education" class="py-12 scroll-mt-16">
-  <h2 class="text-lg font-bold mb-6">Educación</h2>
+<section id="formacion" class="py-12 scroll-mt-16">
+  <h2 class="text-base uppercase tracking-widest text-text-secondary text-center mb-10" data-i18n="education.title">Formación</h2>
 
-  <div class="timeline">
-    <div class="timeline-item reveal reveal-delay-1">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <span class="text-xs text-text-muted">2024 — Actualidad</span>
-        <h3 class="font-semibold">Licenciatura en Ciencias Informáticas</h3>
-        <p class="text-sm text-text-secondary mt-1">Universidad Nacional de Asunción</p>
+  <div class="flex flex-col">
+    {items.map((item, i) => (
+      <div class={`group flex gap-6 py-6 reveal reveal-delay-${i + 1} hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors px-2`}>
+        <span class="text-sm text-accent group-hover:text-white/60 dark:group-hover:text-black/60 shrink-0 w-32 pt-0.5 transition-colors" data-i18n={`education.${i}.period`}>{item.period}</span>
+        <div>
+          <h3 class="font-semibold text-base md:text-lg" data-i18n={`education.${i}.title`}>{item.title}</h3>
+          <p class="text-sm md:text-base text-text-secondary group-hover:text-white/70 dark:group-hover:text-black/70 mt-0.5 transition-colors">{item.place}</p>
+        </div>
       </div>
-    </div>
-    <div class="timeline-item reveal reveal-delay-2">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <span class="text-xs text-text-muted">2020 — 2022</span>
-        <h3 class="font-semibold">Bachiller Técnico en Informática</h3>
-        <p class="text-sm text-text-secondary mt-1">Colegio Dr. Manuel Domínguez</p>
-      </div>
-    </div>
+    ))}
   </div>
 </section>
